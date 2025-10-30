@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+struct Student {
+    char name[50];
+    int age;
+    char gender[10];
+    char branch[50];
+};
+
+void copyString(char* dest, const char* src) {
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+}
+
+int main() {
+    
+    int size = 100;
+    Student* students = new Student[size];
+    copyString(students[0].name, "Alice");
+    students[0].age = 20;
+    copyString(students[0].gender, "Female");
+    copyString(students[0].branch, "Computer Science");
+    int newSize = 200;
+    Student* temp = new Student[newSize];
+    for (int i = 0; i < size; i++) {
+        temp[i] = students[i];
+    }
+    delete[] students;
+    students = temp;
+    size = newSize;
+    cout << "Resized array size: " << size << endl;
+    cout << "First student's name: " << students[0].name << endl;
+    delete[] students;
+
+    return 0;
+}
