@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int searchSequence(const char* str, const char* seq) {
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == seq[0] && str[i + 1] == seq[1] && str[i + 2] == seq[2]) {
+            return i; 
+        }
+        i++;
+    }
+    return -1;
+    }
+int main() {
+    char text[100];
+    char sequence[4];  
+    cout << "Enter a string: ";
+    cin.getline(text, 100);
+    cout << "Enter a 3-character sequence to search: ";
+    cin.getline(sequence, 4);
+    int position = searchSequence(text, sequence);
+    if (position != -1)
+        cout << "Sequence found at position " << position << endl;
+    else
+        cout << "Sequence not found in the string." << endl;
+
+    return 0;
+}
